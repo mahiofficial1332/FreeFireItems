@@ -43,8 +43,16 @@ export async function getInitialData(): Promise<{ items: ItemWithCategory[], cat
         batches.push(itemsToCategorize.slice(i, i + BATCH_SIZE));
     }
 
-    const categorizedBatches = await Promise.all(batches.map(batch => categorizeIcons(batch)));
-    const categorizedData = categorizedBatches.filter(Boolean).flat();
+    // Process batches sequentially with a delay to respect API rate limits (15 requests/minute)
+    const categorizedData = [];
+    for (const batch of batches) {
+        const result = await categorizeIcons(batch);
+        if (result) {
+            categorizedData.push(...result);
+        }
+        // Wait for 4.1 seconds to stay under the 15 requests/minute limit
+        await new Promise(resolve => setTimeout(resolve, 4100));
+    }
 
     const categoryMap = new Map(categorizedData.map(c => [c.itemID, c.category]));
     
