@@ -23,9 +23,8 @@ export function ItemCard({ item }: ItemCardProps) {
   const cardPlaceholder = 'https://placehold.co/150x150.png';
   const dialogPlaceholder = 'https://placehold.co/128x128.png';
 
-  const isValidUrl = item.icon && item.icon.startsWith('http');
-  const imageUrl = isValidUrl ? item.icon : cardPlaceholder;
-  const dialogImageUrl = isValidUrl ? item.icon : dialogPlaceholder;
+  const imageUrl = `https://freefireinfo.vercel.app/icon?id=${item.itemID}`;
+  const dialogImageUrl = `https://freefireinfo.vercel.app/icon?id=${item.itemID}`;
   
   const aiHint = item.description ? item.description.split(' ').slice(0, 2).join(' ').toLowerCase() : 'item icon';
 

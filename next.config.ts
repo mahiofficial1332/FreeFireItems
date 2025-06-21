@@ -20,7 +20,13 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'system.ffgarena.cloud',
         port: '',
-        pathname: '/api/iconsff/**',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'freefireinfo.vercel.app',
+        port: '',
+        pathname: '/**',
       },
       {
         protocol: 'https',
