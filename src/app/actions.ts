@@ -1,5 +1,6 @@
 'use server';
 
+import { cache } from 'react';
 import { categorizeIcons } from '@/ai/flows/categorize-icons';
 import type { FreeFireItem, ItemWithCategory } from '@/lib/types';
 
@@ -9,7 +10,7 @@ const URLS = [
   'https://raw.githubusercontent.com/iamaanahmad/FreeFireItems/refs/heads/main/IconData.json',
 ];
 
-export async function getInitialData(): Promise<{ items: ItemWithCategory[], categories: string[] }> {
+export const getInitialData = cache(async (): Promise<{ items: ItemWithCategory[], categories: string[] }> => {
   try {
     const responses = await Promise.all(URLS.map(url => fetch(url, { cache: 'no-store' })));
     const allJson = await Promise.all(responses.map(res => {
@@ -50,8 +51,8 @@ export async function getInitialData(): Promise<{ items: ItemWithCategory[], cat
         if (result) {
             categorizedData.push(...result);
         }
-        // Wait for 4.1 seconds to stay under the 15 requests/minute limit
-        await new Promise(resolve => setTimeout(resolve, 4100));
+        // Wait for 5 seconds to stay under the 15 requests/minute limit
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     const categoryMap = new Map(categorizedData.map(c => [c.itemID, c.category]));
@@ -68,4 +69,4 @@ export async function getInitialData(): Promise<{ items: ItemWithCategory[], cat
     console.error("Error fetching or processing initial data:", error);
     return { items: [], categories: [] };
   }
-}
+});
