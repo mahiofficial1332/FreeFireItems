@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
         hostname: 'system.ffgarena.cloud',
         port: '',
         pathname: '/api/iconsff/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

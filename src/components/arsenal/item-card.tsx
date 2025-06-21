@@ -20,7 +20,7 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item }: ItemCardProps) {
-  const imageUrl = `https://system.ffgarena.cloud/api/iconsff?image=${item.itemID}.png`;
+  const imageUrl = item.icon;
   
   const aiHint = item.description ? item.description.split(' ').slice(0, 2).join(' ').toLowerCase() : 'item icon';
 
