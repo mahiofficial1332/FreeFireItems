@@ -21,10 +21,9 @@ interface ItemCardProps {
 
 export function ItemCard({ item }: ItemCardProps) {
   const cardPlaceholder = 'https://placehold.co/150x150.png';
-  const dialogPlaceholder = 'https://placehold.co/128x128.png';
+  const dialogPlaceholder = 'https://placehold.co/160x160.png';
 
   const imageUrl = `https://freefireinfo.vercel.app/icon?id=${item.itemID}`;
-  const dialogImageUrl = `https://freefireinfo.vercel.app/icon?id=${item.itemID}`;
   
   const aiHint = item.description ? item.description.split(' ').slice(0, 2).join(' ').toLowerCase() : 'item icon';
 
@@ -52,15 +51,18 @@ export function ItemCard({ item }: ItemCardProps) {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <div className="flex justify-center mb-4">
-            <div className="w-32 h-32 rounded-lg bg-zinc-800/50 flex items-center justify-center p-2">
+            <div className="relative w-40 h-40 rounded-lg bg-zinc-800/50 flex items-center justify-center p-2">
               <Image
-                src={dialogImageUrl}
+                src={imageUrl}
                 alt={item.description || 'Free Fire Item'}
-                width={128}
-                height={128}
+                width={160}
+                height={160}
                 className="object-contain"
                 onError={(e) => { e.currentTarget.src = dialogPlaceholder; e.currentTarget.srcset = '' }}
               />
+              <div className="absolute bottom-2 left-2 right-2 w-auto bg-black/40 backdrop-blur-sm py-0.5 text-center rounded-md">
+                <p className="text-white/90 text-[10px] font-semibold tracking-wider select-none">linktr.ee/FreeFireInt</p>
+              </div>
             </div>
           </div>
           <DialogTitle className="text-center text-2xl font-headline">{item.description}</DialogTitle>
