@@ -20,7 +20,12 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item }: ItemCardProps) {
-  const imageUrl = item.icon;
+  const cardPlaceholder = 'https://placehold.co/150x150.png';
+  const dialogPlaceholder = 'https://placehold.co/128x128.png';
+
+  const isValidUrl = item.icon && item.icon.startsWith('http');
+  const imageUrl = isValidUrl ? item.icon : cardPlaceholder;
+  const dialogImageUrl = isValidUrl ? item.icon : dialogPlaceholder;
   
   const aiHint = item.description ? item.description.split(' ').slice(0, 2).join(' ').toLowerCase() : 'item icon';
 
@@ -37,7 +42,7 @@ export function ItemCard({ item }: ItemCardProps) {
               className="object-contain transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
               data-ai-hint={aiHint}
-              onError={(e) => { e.currentTarget.src = 'https://placehold.co/150x150.png'; e.currentTarget.srcset = '' }}
+              onError={(e) => { e.currentTarget.src = cardPlaceholder; e.currentTarget.srcset = '' }}
             />
           </CardContent>
         </Card>
@@ -47,12 +52,12 @@ export function ItemCard({ item }: ItemCardProps) {
           <div className="flex justify-center mb-4">
             <div className="w-32 h-32 rounded-lg bg-zinc-800/50 flex items-center justify-center p-2">
               <Image
-                src={imageUrl}
+                src={dialogImageUrl}
                 alt={item.description || 'Free Fire Item'}
                 width={128}
                 height={128}
                 className="object-contain"
-                onError={(e) => { e.currentTarget.src = 'https://placehold.co/128x128.png'; e.currentTarget.srcset = '' }}
+                onError={(e) => { e.currentTarget.src = dialogPlaceholder; e.currentTarget.srcset = '' }}
               />
             </div>
           </div>
