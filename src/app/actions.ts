@@ -36,7 +36,7 @@ export const getInitialData = cache(async (): Promise<{ items: ItemWithCategory[
     }));
 
     // Categorize items in batches to avoid exceeding context window limits
-    const BATCH_SIZE = 100;
+    const BATCH_SIZE = 50;
     const batches = [];
     for (let i = 0; i < itemsToCategorize.length; i += BATCH_SIZE) {
         batches.push(itemsToCategorize.slice(i, i + BATCH_SIZE));

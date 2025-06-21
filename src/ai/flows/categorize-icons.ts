@@ -1,4 +1,3 @@
-// 'use server';
 /**
  * @fileOverview An AI agent to categorize Free Fire item icons.
  *
@@ -6,8 +5,6 @@
  * - CategorizeIconsInput - The input type for the categorizeIcons function.
  * - CategorizeIconsOutput - The return type for the categorizeIcons function.
  */
-
-'use server';
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
