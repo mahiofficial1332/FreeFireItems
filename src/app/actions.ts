@@ -1,5 +1,4 @@
 import { cache } from 'react';
-import { categorizeIcons } from '@/ai/flows/categorize-icons';
 import type { FreeFireItem, ItemWithCategory } from '@/lib/types';
 
 const URLS = [
@@ -7,6 +6,24 @@ const URLS = [
   'https://raw.githubusercontent.com/iamaanahmad/FreeFireItems/refs/heads/main/FFiconData46.json',
   'https://raw.githubusercontent.com/iamaanahmad/FreeFireItems/refs/heads/main/IconData.json',
 ];
+
+const getCategoryForItem = (item: FreeFireItem): string => {
+  const description = (item.description || '').toLowerCase();
+  const description2 = (item.description2 || '').toLowerCase();
+  const combinedDescription = `${description} ${description2}`;
+
+  if (combinedDescription.includes('weapon') || combinedDescription.includes('gun') || combinedDescription.includes('rifle') || combinedDescription.includes('pistol') || combinedDescription.includes('shotgun') || combinedDescription.includes('smg') || combinedDescription.includes('sniper') || combinedDescription.includes('melee')) {
+    return 'Weapon';
+  }
+  if (combinedDescription.includes('helmet') || combinedDescription.includes('vest') || combinedDescription.includes('backpack') || combinedDescription.includes('scope') || combinedDescription.includes('armour') || combinedDescription.includes('gloo wall')) {
+    return 'Accessory';
+  }
+  if (combinedDescription.includes('medkit') || combinedDescription.includes('mushroom') || combinedDescription.includes('inhaler') || combinedDescription.includes('revival')) {
+    return 'Consumable';
+  }
+  return 'Other';
+};
+
 
 export const getInitialData = cache(async (): Promise<{ items: ItemWithCategory[], categories: string[] }> => {
   try {
@@ -28,36 +45,9 @@ export const getInitialData = cache(async (): Promise<{ items: ItemWithCategory[
     });
     const uniqueItems = Array.from(uniqueItemsMap.values());
 
-    const itemsToCategorize = uniqueItems.map(({ itemID, description, description2, icon }) => ({
-      itemID,
-      description: description || '',
-      description2: description2 || '',
-      icon: icon || '',
-    }));
-
-    // Categorize items in batches to avoid exceeding context window limits
-    const BATCH_SIZE = 50;
-    const batches = [];
-    for (let i = 0; i < itemsToCategorize.length; i += BATCH_SIZE) {
-        batches.push(itemsToCategorize.slice(i, i + BATCH_SIZE));
-    }
-
-    // Process batches sequentially with a delay to respect API rate limits (15 requests/minute)
-    const categorizedData = [];
-    for (const batch of batches) {
-        const result = await categorizeIcons(batch);
-        if (result) {
-            categorizedData.push(...result);
-        }
-        // Wait for 5 seconds to stay under the 15 requests/minute limit
-        await new Promise(resolve => setTimeout(resolve, 5000));
-    }
-
-    const categoryMap = new Map(categorizedData.map(c => [c.itemID, c.category]));
-    
     const itemsWithCategory: ItemWithCategory[] = uniqueItems.map(item => ({
       ...item,
-      category: categoryMap.get(item.itemID) || 'Other',
+      category: getCategoryForItem(item),
     }));
 
     const allCategories = [...new Set(itemsWithCategory.map(item => item.category))];
