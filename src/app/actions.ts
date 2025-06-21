@@ -1,5 +1,3 @@
-'use server';
-
 import { cache } from 'react';
 import { categorizeIcons } from '@/ai/flows/categorize-icons';
 import type { FreeFireItem, ItemWithCategory } from '@/lib/types';
