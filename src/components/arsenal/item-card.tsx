@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import type { ItemWithCategory } from '@/lib/types';
 import {
   Card,
@@ -20,10 +21,23 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item }: ItemCardProps) {
-  const cardPlaceholder = 'https://placehold.co/150x150.png';
-  const dialogPlaceholder = 'https://placehold.co/160x160.png';
+  const primaryUrl = `https://freefireinfo.vercel.app/icon?id=${item.itemID}`;
+  const fallbackUrl = `https://system.ffgarena.cloud/api/iconsff?image=${item.itemID}.png`;
+  const placeholderUrl = 'https://placehold.co/160x160.png';
 
-  const imageUrl = `https://freefireinfo.vercel.app/icon?id=${item.itemID}`;
+  const [imageUrl, setImageUrl] = useState(primaryUrl);
+
+  useEffect(() => {
+    setImageUrl(primaryUrl);
+  }, [item.itemID, primaryUrl]);
+
+  const handleError = () => {
+    if (imageUrl === primaryUrl) {
+      setImageUrl(fallbackUrl);
+    } else {
+      setImageUrl(placeholderUrl);
+    }
+  };
   
   const aiHint = item.description ? item.description.split(' ').slice(0, 2).join(' ').toLowerCase() : 'item icon';
 
@@ -40,7 +54,7 @@ export function ItemCard({ item }: ItemCardProps) {
               className="object-contain transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
               data-ai-hint={aiHint}
-              onError={(e) => { e.currentTarget.src = cardPlaceholder; e.currentTarget.srcset = '' }}
+              onError={handleError}
             />
             <div className="absolute bottom-0 w-full bg-black/40 backdrop-blur-sm py-0.5 text-center">
               <p className="text-white/90 text-[10px] font-semibold tracking-wider select-none">linktr.ee/FreeFireInt</p>
@@ -58,7 +72,7 @@ export function ItemCard({ item }: ItemCardProps) {
                 width={160}
                 height={160}
                 className="object-contain"
-                onError={(e) => { e.currentTarget.src = dialogPlaceholder; e.currentTarget.srcset = '' }}
+                onError={handleError}
               />
               <div className="absolute bottom-2 left-2 right-2 w-auto bg-black/40 backdrop-blur-sm py-0.5 text-center rounded-md">
                 <p className="text-white/90 text-[10px] font-semibold tracking-wider select-none">linktr.ee/FreeFireInt</p>
