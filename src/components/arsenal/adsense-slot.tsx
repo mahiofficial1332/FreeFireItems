@@ -1,12 +1,12 @@
 'use client';
 
 export function AdSenseSlot() {
-  return (
-    <div className="aspect-square flex items-center justify-center rounded-lg border-2 border-dashed border-border bg-card/50 text-muted-foreground">
-      <div className="text-center">
-        <p className="font-semibold">Ad Slot</p>
-        <p className="text-sm">(300x250)</p>
-      </div>
-    </div>
-  );
+ return (
+ <ins className="adsbygoogle"
+ style={{display:'block'}}
+ data-ad-client="ca-pub-6409311049525505"
+ data-ad-slot="7317445135"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ );
 }
