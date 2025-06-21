@@ -2,10 +2,10 @@ import { cache } from 'react';
 import type { FreeFireItem, ItemWithCategory } from '@/lib/types';
 
 const URLS = [
-  'https://raw.githubusercontent.com/iamaanahmad/FreeFireItems/refs/heads/main/FFiconDataOB47.json',
-  'https://raw.githubusercontent.com/iamaanahmad/FreeFireItems/refs/heads/main/FFiconData46.json',
-  'https://raw.githubusercontent.com/iamaanahmad/FreeFireItems/refs/heads/main/IconData.json',
-];
+  process.env.DATA_URL_1,
+  process.env.DATA_URL_2,
+  process.env.DATA_URL_3,
+].filter(Boolean) as string[];
 
 const getCategoryForItem = (item: FreeFireItem): string => {
   const description = (item.description || '').toLowerCase();

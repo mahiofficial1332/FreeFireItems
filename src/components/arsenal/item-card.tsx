@@ -21,8 +21,8 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item }: ItemCardProps) {
-  const primaryUrl = `https://freefireinfo.vercel.app/icon?id=${item.itemID}`;
-  const fallbackUrl = `https://system.ffgarena.cloud/api/iconsff?image=${item.itemID}.png`;
+  const primaryUrl = `${process.env.NEXT_PUBLIC_IMAGE_API_PRIMARY}?id=${item.itemID}`;
+  const fallbackUrl = `${process.env.NEXT_PUBLIC_IMAGE_API_FALLBACK}?image=${item.itemID}.png`;
   const placeholderUrl = 'https://placehold.co/160x160.png';
 
   const [imageUrl, setImageUrl] = useState(primaryUrl);
