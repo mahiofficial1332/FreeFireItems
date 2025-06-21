@@ -8,7 +8,7 @@ interface ItemGridProps {
   items: ItemWithCategory[];
 }
 
-const AD_INTERVAL = 12;
+const AD_INTERVAL = 8;
 
 export function ItemGrid({ items }: ItemGridProps) {
   if (items.length === 0) {

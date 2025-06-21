@@ -32,7 +32,7 @@ export function ItemCard({ item }: ItemCardProps) {
     <Dialog>
       <DialogTrigger asChild>
         <Card className="overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1 group bg-card border-border">
-          <CardContent className="p-0 aspect-square flex items-center justify-center bg-zinc-800/50">
+          <CardContent className="relative p-0 aspect-square flex items-center justify-center bg-zinc-800/50">
             <Image
               src={imageUrl}
               alt={item.description || 'Free Fire Item'}
@@ -43,6 +43,9 @@ export function ItemCard({ item }: ItemCardProps) {
               data-ai-hint={aiHint}
               onError={(e) => { e.currentTarget.src = cardPlaceholder; e.currentTarget.srcset = '' }}
             />
+            <div className="absolute bottom-0 w-full bg-black/40 backdrop-blur-sm py-0.5 text-center">
+              <p className="text-white/90 text-[10px] font-semibold tracking-wider select-none">linktr.ee/FreeFireInt</p>
+            </div>
           </CardContent>
         </Card>
       </DialogTrigger>
