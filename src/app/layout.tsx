@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   description: 'Your complete library for Free Fire item icons. Search and explore weapons, accessories, and more.',
 };
 
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -15,6 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-K62W5JEY4K"></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-K62W5JEY4K');`}
+        </script>
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6409311049525505" crossOrigin="anonymous"></script>
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
