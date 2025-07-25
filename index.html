@@ -253,6 +253,24 @@
             height: 42px;
         }
 
+        .header-branding {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .header-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            object-fit: contain;
+            transition: transform var(--transition-normal);
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
         .header-title {
             font-weight: 700;
             font-size: var(--font-size-xl);
@@ -262,6 +280,10 @@
             background-clip: text;
             letter-spacing: -0.02em;
             transition: all var(--transition-normal);
+        }
+
+        .header.search-mode .header-branding {
+            display: none;
         }
 
         .header.search-mode .header-title {
@@ -880,6 +902,11 @@
                 padding: var(--spacing-md);
             }
             
+            .header-logo {
+                width: 28px;
+                height: 28px;
+            }
+            
             .header-title {
                 font-size: var(--font-size-lg);
             }
@@ -1132,7 +1159,13 @@
     <!-- Main Header with Search -->
     <header class="header" id="header" role="banner">
         <div class="header-title-container">
-            <h1 class="header-title">ARSENAL</h1>
+            <div class="header-branding">
+                <img src="https://www.freefirecommunity.com/wp-content/uploads/2025/06/FreeFireCommunityLogoRefined.png" 
+                     alt="Free Fire Community Logo" 
+                     class="header-logo"
+                     onerror="this.style.display='none'">
+                <h1 class="header-title">ARSENAL</h1>
+            </div>
             <button class="header-menu" id="menuButton" aria-label="Toggle search" role="button">
                 <i class="fas fa-search" aria-hidden="true"></i>
             </button>
@@ -1167,7 +1200,7 @@
     
     <!-- iframe Detection Notice -->
     <div id="iframe-notice" class="iframe-notice">
-        🎮 You're viewing Free Fire Items Database in Discord! 
+        🎮 Free Fire Arsenal in Discord! Some features may be limited due to Discord's security restrictions.
         <a href="https://arsenal.freefirecommunity.com" target="_blank">Open full site</a>
         <button onclick="dismissIframeNotice()">×</button>
     </div>
@@ -1199,7 +1232,7 @@
         <nav class="pagination-container" aria-label="Pagination">  
             <div class="pagination" id="pagination" role="group"></div>  
         </nav>  
-    </main>  
+    </main>
 
     <!-- Item Details Modal -->
     <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">  
@@ -1454,13 +1487,59 @@
                 const grid = document.getElementById("iconGrid");
                 grid.innerHTML = '<div class="no-results">Loading items...</div>';
 
-                const response = await fetch("https://raw.githubusercontent.com/starexxx/FFItems/74c2af66d691776c2452bd72ca0388ba52d7c5fb/assets/itemData.json");
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                // Multiple data sources for better reliability, especially in Discord
+                const dataSources = [
+                    "https://raw.githubusercontent.com/starexxx/FFItems/74c2af66d691776c2452bd72ca0388ba52d7c5fb/assets/itemData.json",
+                    "https://cdn.jsdelivr.net/gh/starexxx/FFItems@74c2af66d691776c2452bd72ca0388ba52d7c5fb/assets/itemData.json",
+                    "https://raw.githubusercontent.com/iamaanahmad/FreeFireItems/main/ItemData.json"
+                ];
+
+                let data = null;
+                let lastError = null;
+
+                // Try each data source
+                for (const source of dataSources) {
+                    try {
+                        console.log(`Attempting to fetch from: ${source}`);
+                        const response = await fetch(source, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            mode: 'cors'
+                        });
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        
+                        data = await response.json();
+                        console.log(`Successfully fetched from: ${source}`);
+                        break; // Success, exit loop
+                        
+                    } catch (error) {
+                        console.warn(`Failed to fetch from ${source}:`, error.message);
+                        lastError = error;
+                        continue; // Try next source
+                    }
                 }
-                
-                const data = await response.json();
+
+                // If all sources failed, use fallback data or show error
+                if (!data) {
+                    // Try using JSONP or other fallback methods for Discord
+                    try {
+                        data = await fetchWithJSONP();
+                    } catch (jsonpError) {
+                        console.error("All data sources failed:", lastError);
+                        showError(`Unable to load item data. This might be due to network restrictions in Discord Activities. Please try opening the website directly: https://arsenal.freefirecommunity.com`);
+                        return;
+                    }
+                }
+
+                if (!Array.isArray(data) || data.length === 0) {
+                    throw new Error("Invalid or empty data received");
+                }
 
                 // Enhanced data processing with validation
                 iconsData = data.map(item => ({
@@ -1507,14 +1586,38 @@
             }
         }
 
+        // JSONP fallback for Discord Activities
+        async function fetchWithJSONP() {
+            return new Promise((resolve, reject) => {
+                // This is a simplified fallback - you might need to implement a proper JSONP endpoint
+                // For now, we'll just reject to show the appropriate error message
+                reject(new Error("JSONP fallback not available"));
+            });
+        }
+
         function showError(message = "Failed to load items. Please try again later.") {
             const grid = document.getElementById("iconGrid");
             grid.innerHTML = `
                 <div class="no-results">
                     <strong>⚠️ Error Loading Items</strong><br>
-                    <span style="font-size: 14px; opacity: 0.8;">${message}</span><br>
-                    <button onclick="window.location.reload()" style="margin-top: 16px; padding: 8px 16px; background: var(--primary-orange); color: white; border: none; border-radius: 8px; cursor: pointer;">
-                        Retry
+                    <span style="font-size: 14px; opacity: 0.8; margin: 12px 0; display: block;">${message}</span><br>
+                    
+                    ${window.self !== window.top ? `
+                        <div style="background: var(--background-secondary); padding: 16px; border-radius: 8px; margin: 16px 0; border: 1px solid var(--card-border);">
+                            <p style="font-size: 13px; margin: 0 0 12px 0; color: var(--text-secondary);">
+                                <strong>Discord Activity Limitation:</strong><br>
+                                Due to Discord's security restrictions, some features may not work properly in Activities.
+                            </p>
+                            <a href="https://arsenal.freefirecommunity.com" target="_blank" 
+                               style="display: inline-block; background: var(--primary-orange); color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;">
+                                🌐 Open Full Website
+                            </a>
+                        </div>
+                    ` : ''}
+                    
+                    <button onclick="window.location.reload()" 
+                            style="margin-top: 16px; padding: 8px 16px; background: var(--primary-orange); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                        🔄 Retry
                     </button>
                 </div>
             `;
@@ -1562,14 +1665,18 @@
                             }, 1000);
                         }
                         
-                        // Auto-dismiss after 5 seconds
+                        // Auto-dismiss after 10 seconds for Discord users
                         setTimeout(() => {
                             dismissIframeNotice();
-                        }, 5000);
+                        }, 10000);
+                        
+                        // Add special handling for Discord Activities
+                        console.log('Running in iframe - likely Discord Activity');
                     }
                 } catch (e) {
                     // If we can't access parent, we're likely in a cross-origin iframe
                     document.body.classList.add('in-iframe');
+                    console.log('Cross-origin iframe detected - likely Discord Activity');
                 }
             }
 
