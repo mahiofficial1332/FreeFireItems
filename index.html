@@ -1890,8 +1890,6 @@
 
         function openModal(icon) {
             const modal = document.getElementById("modal");
-            const modalImgContainer = document.getElementById("modalImgContainer");
-            const modalTempImage = document.getElementById("modalTempImage");
             const modalContent = document.querySelector('.modal-content');
             
             // Populate modal content with enhanced data
@@ -1905,33 +1903,16 @@
             
             // Set modal title for accessibility
             const modalTitle = document.getElementById("modal-title");
-            modalTitle.id = "modal-title";
             modal.setAttribute('aria-labelledby', 'modal-title');
             
-            // Load images with fallback
+            // Load image with fallback
             const modalImg = document.getElementById("modalImage");
             modalImg.src = icon.imageUrl;
+            modalImg.alt = icon.name || "Item Image";
             modalImg.onerror = () => {
                 modalImg.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjMkEyQTJBIiByeD0iMTIiLz4KPHBHDCB1PSJNNjAgNDBWODBNNDAgNjBIODAiIHN0cm9rZT0iIzY2NjY2NiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+';
+                modalImg.alt = `${icon.name} (Image not available)`;
             };
-            
-            modalTempImage.src = icon.imageUrl;
-            modalTempImage.onerror = () => {
-                modalTempImage.src = modalImg.src;
-            };
-            
-            // Enhanced modal animation
-            if (lastClickedCard) {
-                const cardRect = lastClickedCard.getBoundingClientRect();
-                const cardImg = lastClickedCard.querySelector('img');
-                
-                modalImgContainer.style.width = `${cardImg.width}px`;
-                modalImgContainer.style.height = `${cardImg.height}px`;
-                modalImgContainer.style.left = `${cardRect.left + (cardRect.width - cardImg.width)/2}px`;
-                modalImgContainer.style.top = `${cardRect.top + (cardRect.height - cardImg.height)/2}px`;
-                modalImgContainer.style.transform = 'none';
-                modalImgContainer.style.display = 'block';
-            }
             
             // Show modal with accessibility features
             modal.classList.add("show");
@@ -1941,31 +1922,15 @@
             
             // Focus management
             setTimeout(() => {
-                const closeButton = document.querySelector('.modal-close');
-                closeButton.focus();
+                const closeButton = document.querySelector('.modal-close-btn');
+                if (closeButton) {
+                    closeButton.focus();
+                }
             }, 300);
             
-            // Animate image transition
-            if (lastClickedCard) {
-                setTimeout(() => {
-                    const modalRect = modal.getBoundingClientRect();
-                    const targetLeft = modalRect.left + (modalRect.width - 120)/2;
-                    const targetTop = modalRect.top + 100;
-                    
-                    modalImgContainer.style.width = '120px';
-                    modalImgContainer.style.height = '120px';
-                    modalImgContainer.style.left = `${targetLeft}px`;
-                    modalImgContainer.style.top = `${targetTop}px`;
-                    
-                    setTimeout(() => {
-                        modalContent.style.opacity = '1';
-                        modalContent.style.transform = 'scale(1) translateY(0)';
-                    }, 200);
-                }, 50);
-            } else {
-                modalContent.style.opacity = '1';
-                modalContent.style.transform = 'scale(1) translateY(0)';
-            }
+            // Simple fade in animation
+            modalContent.style.opacity = '1';
+            modalContent.style.transform = 'scale(1) translateY(0)';
             
             // Analytics tracking
             console.log(`Modal opened for item: ${icon.name} (ID: ${icon.itemId})`);
@@ -1973,7 +1938,6 @@
 
         function closeModal() {
             const modal = document.getElementById("modal");
-            const modalImgContainer = document.getElementById("modalImgContainer");
             const modalContent = document.querySelector('.modal-content');
             
             // Reset focus to the card that opened the modal
@@ -1981,26 +1945,15 @@
                 lastClickedCard.focus();
             }
             
+            // Simple fade out animation
             modalContent.style.opacity = '0';
             modalContent.style.transform = 'scale(0.9) translateY(20px)';
-            
-            if (lastClickedCard) {
-                const cardRect = lastClickedCard.getBoundingClientRect();
-                const cardImg = lastClickedCard.querySelector('img');
-                
-                modalImgContainer.style.width = `${cardImg.width}px`;
-                modalImgContainer.style.height = `${cardImg.height}px`;
-                modalImgContainer.style.left = `${cardRect.left + (cardRect.width - cardImg.width)/2}px`;
-                modalImgContainer.style.top = `${cardRect.top + (cardRect.height - cardImg.height)/2}px`;
-                modalImgContainer.style.transform = 'none';
-            }
             
             setTimeout(() => {
                 modal.classList.remove("show");
                 modal.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = "auto";
                 modalOpen = false;
-                modalImgContainer.style.display = 'none';
             }, 300);
         }
 
