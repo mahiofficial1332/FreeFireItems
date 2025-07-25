@@ -1,6 +1,6 @@
-MIT License
+MIT License with Educational Use Clarification
 
-Copyright (c) 2025 Amaan Ahmad
+Copyright (c) 2025 Aana Ahmad (@iamaanahmad) - Arsenal Free Fire Items Database
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12,6 +12,28 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
+EDUCATIONAL USE CLARIFICATION:
+This project is specifically designed for educational and community purposes.
+While the MIT License allows commercial use of the code/database structure,
+users must respect that:
+
+1. All Free Fire game assets, item data, names, images, and intellectual 
+   property belong exclusively to Garena International Private Limited and 
+   Sea Limited.
+
+2. The structured data format, web interface, and database organization are 
+   provided under MIT License for educational and community use.
+
+3. Commercial use of the actual Free Fire item data or assets requires 
+   proper licensing from Garena International.
+
+4. This project is not affiliated with, endorsed by, or sponsored by 
+   Garena International or Sea Limited.
+
+5. Users implementing this software must comply with Garena's Terms of 
+   Service and respect intellectual property rights.
+
+DISCLAIMER:
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,3 +41,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+INTELLECTUAL PROPERTY NOTICE:
+Free Fire is a trademark of Garena International Private Limited.
+All game-related content, assets, and data are property of their respective owners.
+This database is compiled for educational reference and community use only.
+
+For legal inquiries or content removal requests:
+Email: legal@freefirecommunity.com
