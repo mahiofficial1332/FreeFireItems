@@ -629,7 +629,7 @@
             overflow-y: auto;
             position: relative;
             z-index: 1001;
-            width: 350px;
+            width: 400px;
             opacity: 0;
             transform: scale(0.9) translateY(20px);
             transition: all var(--transition-normal);
@@ -641,47 +641,80 @@
             transform: scale(1) translateY(0);
         }
 
+        /* Remove the floating image container - causing the duplicate image issue */
         .modal-img-container {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            display: none;
-            z-index: 1002;
-            transition: all var(--transition-slow) cubic-bezier(0.22, 1, 0.36, 1);
-            transform-origin: center;
+            display: none !important;
         }
 
-        .modal-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: var(--radius-sm);
-            transition: all var(--transition-slow) cubic-bezier(0.22, 1, 0.36, 1);
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 32px;
+            height: 32px;
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all var(--transition-normal);
+            z-index: 1002;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .modal-close-btn:hover {
+            background: var(--primary-orange-hover);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .modal-image-container {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
         }
 
         .modal img {
             width: 120px;
             height: 120px;
-            margin: 0 auto var(--spacing-lg);
             border-radius: var(--radius-md);
             user-select: none;
-            display: block;
             object-fit: contain;
             border: 2px solid var(--card-border);
             box-shadow: var(--shadow-medium);
+            background: var(--background-secondary);
         }
 
-        .modal h3 {
+        .modal-title {
             font-size: var(--font-size-xl);
             font-weight: 700;
             margin: 0 0 var(--spacing-sm) 0;
             color: var(--primary-orange);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.3;
         }
 
-        .modal p {
-            margin: var(--spacing-sm) 0;
+        .modal-subtitle {
+            margin: var(--spacing-sm) 0 var(--spacing-lg) 0;
             line-height: 1.6;
             font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .modal-section {
@@ -701,30 +734,23 @@
             letter-spacing: 0.05em;
         }
 
-        .modal-close {
-            margin-top: var(--spacing-lg);
-            padding: var(--spacing-md) var(--spacing-xl);
-            border: none;
-            background: var(--gradient-primary);
-            color: var(--button-active-text);
+        .modal-section p {
+            margin: var(--spacing-xs) 0;
             font-size: var(--font-size-sm);
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: var(--radius-md);
-            transition: all var(--transition-normal);
-            width: 100%;
-            user-select: none;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
-        .modal-close:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
+        .modal-section span {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
-        .modal-close:active {
-            transform: translateY(0);
+        /* Remove the old close button styles */
+        .modal-close {
+            display: none;
         }
 
         /* Enhanced Loading Animation */
@@ -942,9 +968,21 @@
                 max-height: 85vh;
             }
             
+            .modal-close-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+                top: -8px;
+                right: -8px;
+            }
+            
             .modal img {
                 width: 100px;
                 height: 100px;
+            }
+            
+            .modal-title {
+                font-size: var(--font-size-lg);
             }
             
             .filters-row {
@@ -1237,15 +1275,19 @@
     <!-- Item Details Modal -->
     <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">  
         <div class="modal-bg" onclick="closeModal()" aria-label="Close modal"></div>
-        <div class="modal-img-container" id="modalImgContainer">
-            <img id="modalTempImage" alt="Item preview">
-        </div>
-        <div class="modal-content">  
-            <img id="modalImage" alt="Item image">  
-            <h3 id="modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close-btn" onclick="closeModal()" aria-label="Close modal">×</button>
+            </div>
+            
+            <div class="modal-image-container">
+                <img id="modalImage" alt="Item image">
+            </div>
+            
+            <h3 class="modal-title" id="modal-title">
                 <span id="modalDescription"></span>
             </h3>
-            <p id="modalDescription2" class="text-secondary"></p>
+            <p class="modal-subtitle" id="modalDescription2"></p>
             
             <div class="modal-section">
                 <h4>Item Details</h4>
@@ -1259,10 +1301,6 @@
                 <p><strong>Collection:</strong> <span id="modalCollectionType"></span></p>
                 <p><strong>Rarity:</strong> <span id="modalRare"></span></p>
             </div>
-            
-            <button class="modal-close" onclick="closeModal()" aria-label="Close item details">
-                Close Details
-            </button>  
         </div>  
     </div>
     
