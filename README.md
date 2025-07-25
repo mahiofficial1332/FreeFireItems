@@ -91,8 +91,8 @@ Perfect for developers building Free Fire tools:
 
 ```bash
 # Clone the repository
-git clone https://github.com/iamaanahmad/arsenal-freefire-database.git
-cd arsenal-freefire-database
+git clone https://github.com/iamaanahmad/FreeFireItems.git
+cd FreeFireItems
 
 # Load the data in your project
 ```
@@ -313,7 +313,7 @@ Feel free to fork, update, and submit a pull request. Let's build the most compl
 
 - 🐛 **Found a bug?** [Open an issue](../../issues/new?template=bug_report.md)
 - 💡 **Have an idea?** [Request a feature](../../issues/new?template=feature_request.md)
-- ❓ **Need help?** [Join our Discord](https://discord.gg/freefire-community)
+- ❓ **Need help?** [Join our Discord](https://discord.com/invite/free-fire-community-1025382753790865508)
 - 📧 **Email us**: support@freefirecommunity.com
 
 ### 🌟 **Show Your Support**
@@ -327,19 +327,6 @@ If Arsenal helps you, consider:
 - ☕ **Buy us a coffee** (optional, never required!)
 
 ---
-
-## 🎯 Roadmap
-
-### 🚧 **Coming Soon**
-
-| 🔮 **Feature** | 📅 **Timeline** | 📝 **Status** |
-|----------------|-----------------|---------------|
-| 🔍 **Advanced Filters** | Q1 2025 | In Development |
-| 📊 **Statistics Dashboard** | Q1 2025 | Planned |
-| 🌙 **Dark/Light Theme Toggle** | Q2 2025 | Planned |
-| 📱 **PWA Support** | Q2 2025 | Planned |
-| 🔄 **Real-time Updates** | Q3 2025 | Research |
-| 🤖 **API Endpoints** | Q3 2025 | Planned |
 
 ### 💭 **Community Requests**
 
@@ -386,9 +373,9 @@ If Arsenal helps you, consider:
 
 <div align="center">
 
-[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=iamaanahmad&show_icons=true&theme=dark&bg_color=0a0a0a&title_color=ff6b35&icon_color=ff6b35&text_color=ffffff)](https://github.com/iamaanahmad)
+<!-- [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=iamaanahmad&show_icons=true&theme=dark&bg_color=0a0a0a&title_color=ff6b35&icon_color=ff6b35&text_color=ffffff)](https://github.com/iamaanahmad) -->
 
-[![Repository Stats](https://github-readme-stats.vercel.app/api/pin/?username=iamaanahmad&repo=arsenal-freefire-database&theme=dark&bg_color=0a0a0a&title_color=ff6b35&icon_color=ff6b35&text_color=ffffff)](https://github.com/iamaanahmad/arsenal-freefire-database)
+[![Repository Stats](https://github-readme-stats.vercel.app/api/pin/?username=iamaanahmad&repo=FreeFireItems&theme=dark&bg_color=0a0a0a&title_color=ff6b35&icon_color=ff6b35&text_color=ffffff)](https://github.com/iamaanahmad/FreeFireItems)
 
 </div>
 
@@ -398,7 +385,7 @@ If Arsenal helps you, consider:
 
 <div align="center">
 
-### � **Quick Links**
+### 🔗 **Quick Links**
 
 [![Website](https://img.shields.io/badge/🌐_Website-arsenal.freefirecommunity.com-ff6b35?style=for-the-badge)](https://arsenal.freefirecommunity.com)
 [![GitHub](https://img.shields.io/badge/📱_GitHub-iamaanahmad-181717?style=for-the-badge&logo=github)](https://github.com/iamaanahmad)
@@ -406,9 +393,9 @@ If Arsenal helps you, consider:
 
 ### 📱 **Follow Us**
 
-[![Discord](https://img.shields.io/badge/Discord-Community-5865F2?style=for-the-badge&logo=discord)](https://discord.gg/freefire-community)
-[![Twitter](https://img.shields.io/badge/Twitter-Updates-1DA1F2?style=for-the-badge&logo=twitter)](https://twitter.com/ffcommunity)
-[![YouTube](https://img.shields.io/badge/YouTube-Tutorials-FF0000?style=for-the-badge&logo=youtube)](https://youtube.com/ffcommunity)
+[![Discord](https://img.shields.io/badge/Discord-Community-5865F2?style=for-the-badge&logo=discord)](https://discord.com/invite/free-fire-community-1025382753790865508)
+[![Twitter](https://img.shields.io/badge/Twitter-Updates-1DA1F2?style=for-the-badge&logo=twitter)](https://twitter.com/FreeFireInt)
+[![Instagram](https://img.shields.io/badge/Insta-Updates-FF0000?style=for-the-badge&logo=youtube)](https://instagram.com/garenaff.community)
 
 </div>
 
