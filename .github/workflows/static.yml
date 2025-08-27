@@ -31,13 +31,42 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        
+      - name: Replace environment variables
+        env:
+          IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL }}
+        run: |
+          # Replace the placeholder with the actual secret value
+          sed -i "s|{{IMAGE_BASE_URL}}|$IMAGE_BASE_URL|g" items.html
+          
+          # Verify the replacement was successful
+          echo "✅ Configuration updated successfully"
+          echo "🔒 IMAGE_BASE_URL has been configured from secrets"
+          
+          # Show confirmation without revealing the actual URL
+          if grep -q "$IMAGE_BASE_URL" items.html; then
+            echo "✅ Secret IMAGE_BASE_URL successfully injected into items.html"
+          else
+            echo "❌ Failed to inject IMAGE_BASE_URL"
+            exit 1
+          fi
+          
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
+      - name: Deployment Summary
+        run: |
+          echo "🚀 Deployment completed successfully!"
+          echo "📍 Site URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "🔒 Image URLs are securely configured from secrets"
+          echo "✨ Free Fire Arsenal database is live!"
