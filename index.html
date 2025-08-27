@@ -1738,6 +1738,22 @@
         let contentEngagementTime = 0;
         let startTime = Date.now();
 
+        // Configuration - IMAGE_BASE_URL will be replaced by GitHub Actions
+        const CONFIG = {
+            IMAGE_BASE_URL: '{{IMAGE_BASE_URL}}', // This placeholder will be replaced during build
+            API_ENDPOINT: 'https://raw.githubusercontent.com/starexxx/FFItems/74c2af66d691776c2452bd72ca0388ba52d7c5fb/assets/itemData.json'
+        };
+
+        // Initialize configuration with fallbacks for development
+        function initializeConfig() {
+            // If placeholder wasn't replaced (development), use default
+            if (CONFIG.IMAGE_BASE_URL === '{{IMAGE_BASE_URL}}') {
+                console.log('Using development configuration - IMAGE_BASE_URL:', CONFIG.IMAGE_BASE_URL);
+            } else {
+                console.log('Using production configuration - IMAGE_BASE_URL:', CONFIG.IMAGE_BASE_URL);
+            }
+        }
+
         // Performance optimization: Debounce search
         function debounce(func, wait) {
             return function executedFunction(...args) {
@@ -1752,6 +1768,9 @@
 
         // Enhanced DOM ready with better loading experience
         document.addEventListener("DOMContentLoaded", () => {
+            // Initialize configuration first
+            initializeConfig();
+            
             // Initialize with smooth loading
             setTimeout(() => {
                 document.getElementById("loadingDot").style.display = "none";
@@ -1884,7 +1903,7 @@
                 const grid = document.getElementById("iconGrid");
                 grid.innerHTML = '<div class="no-results">Loading items...</div>';
 
-                const response = await fetch("https://raw.githubusercontent.com/starexxx/FFItems/74c2af66d691776c2452bd72ca0388ba52d7c5fb/assets/itemData.json");
+                const response = await fetch(CONFIG.API_ENDPOINT);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -1902,7 +1921,7 @@
                     itemType: item["itemType"] ? item["itemType"].replace(/_/g, ' ') : 'Unknown',
                     collectionType: item["collectionType"] ? item["collectionType"].replace(/_/g, ' ') : 'Unknown',
                     Rare: item["Rare"] || "Common",
-                    imageUrl: `https://raw.githubusercontent.com/ashqking/FF-Items/main/ICONS/${item["itemID"]}.png`
+                    imageUrl: `${CONFIG.IMAGE_BASE_URL}/${item["itemID"]}.png`
                 })).filter(item => item.itemId !== "Unknown"); // Filter out invalid items
 
                 // Populate filter options
@@ -2117,10 +2136,11 @@
                 
                 // Enhanced error handling with retry
                 img.onerror = () => {
-                    // Try alternative image sources or show placeholder
+                    // Try with different image extension or show placeholder
                     if (!img.dataset.retried) {
                         img.dataset.retried = "true";
-                        img.src = `https://raw.githubusercontent.com/starexxx/FFItems/main/assets/items/${icon.itemId}.png`;
+                        // Try with different case or format
+                        img.src = `${CONFIG.IMAGE_BASE_URL}/${icon.itemId}.webp`;
                     } else {
                         img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjMkEyQTJBIiByeD0iOCIvPgo8cGF0aCBkPSJNMjUgMTVWMzVNMTUgMjVIMzUiIHN0cm9rZT0iIzY2NjY2NiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+';
                         img.alt = `${icon.name} (Image not available)`;
