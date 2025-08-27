@@ -1054,6 +1054,18 @@
                 height: 44px;
                 font-size: var(--font-size-sm);
             }
+            
+            /* Hide side ad on mobile */
+            .side-ad {
+                display: none !important;
+            }
+            
+            /* Stack content better on mobile */
+            .high-value-content > div,
+            .lifestyle-content > div {
+                grid-template-columns: 1fr !important;
+                gap: var(--spacing-md) !important;
+            }
         }
 
         /* iframe Detection and Styling */
@@ -1306,6 +1318,99 @@
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
     </div>
+
+    <!-- High-Value Content Section for Better Ad Targeting -->
+    <section class="high-value-content" style="background: var(--background-secondary); padding: var(--spacing-xl); margin: var(--spacing-lg); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="color: var(--primary-orange); font-size: var(--font-size-2xl); margin-bottom: var(--spacing-lg); text-align: center;">
+                🎮 Complete Free Fire Gaming Guide & Tips
+            </h2>
+            
+            <!-- Gaming Strategy Content -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <div style="background: var(--card-background); padding: var(--spacing-lg); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+                    <h3 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">💰 Gaming Equipment & Accessories</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Enhance your Free Fire gaming experience with professional gaming gear. From high-performance gaming phones to precision controllers, the right equipment can give you the competitive edge. Consider investing in gaming headsets for better audio positioning, gaming triggers for improved shooting accuracy, and portable power banks for extended gaming sessions.</p>
+                    <ul style="color: var(--text-secondary); margin-top: var(--spacing-md);">
+                        <li>Gaming smartphones with high refresh rates</li>
+                        <li>Bluetooth gaming controllers and triggers</li>
+                        <li>Premium gaming headsets and earbuds</li>
+                        <li>Portable chargers and power banks</li>
+                        <li>Gaming chairs and desk accessories</li>
+                    </ul>
+                </div>
+                
+                <div style="background: var(--card-background); padding: var(--spacing-lg); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+                    <h3 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">🏆 Professional Gaming & Esports</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Take your gaming to the next level with professional training and coaching. Many gamers are now pursuing careers in esports, content creation, and gaming education. Learn about tournament strategies, team coordination, and advanced gameplay techniques that can help you compete at higher levels.</p>
+                    <ul style="color: var(--text-secondary); margin-top: var(--spacing-md);">
+                        <li>Esports training and coaching programs</li>
+                        <li>Gaming content creation courses</li>
+                        <li>Tournament participation and prizes</li>
+                        <li>Gaming streaming equipment</li>
+                        <li>Professional gaming merchandise</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Premium Ad Space -->
+            <div class="ad-container content-ad" style="margin: var(--spacing-2xl) 0; background: linear-gradient(135deg, var(--primary-orange-light), var(--background-secondary)); border: 2px solid var(--primary-orange); border-radius: var(--radius-lg);">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6409311049525505"
+                     data-ad-slot="8234567890"
+                     data-ad-format="fluid"
+                     data-ad-layout-key="-6t+ed+2i-1n-4w"
+                     data-full-width-responsive="true"></ins>
+            </div>
+
+            <!-- Technology & Education Content -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <div style="background: var(--card-background); padding: var(--spacing-lg); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+                    <h3 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">💻 Technology & Software</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Stay ahead with the latest technology trends affecting mobile gaming. From cloud gaming services to AI-powered game assistance, technology is rapidly evolving. Learn about VPN services for better connectivity, screen recording software for content creation, and productivity apps for managing your gaming schedule and progress tracking.</p>
+                    <ul style="color: var(--text-secondary); margin-top: var(--spacing-md);">
+                        <li>Cloud gaming platforms and services</li>
+                        <li>VPN services for gaming optimization</li>
+                        <li>Screen recording and editing software</li>
+                        <li>Gaming analytics and tracking tools</li>
+                        <li>Productivity apps for gamers</li>
+                    </ul>
+                </div>
+                
+                <div style="background: var(--card-background); padding: var(--spacing-lg); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+                    <h3 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">📚 Education & Career Development</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Gaming skills are increasingly valuable in various career paths. From game development and design to marketing and community management, the gaming industry offers numerous opportunities. Explore online courses, certifications, and degree programs that can help you build a career around your passion for gaming.</p>
+                    <ul style="color: var(--text-secondary); margin-top: var(--spacing-md);">
+                        <li>Game development and programming courses</li>
+                        <li>Digital marketing and social media management</li>
+                        <li>Graphic design and video editing</li>
+                        <li>Business and entrepreneurship programs</li>
+                        <li>Online certification and degree programs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Financial & Investment Content -->
+            <div style="background: var(--card-background); padding: var(--spacing-xl); border-radius: var(--radius-md); border: 1px solid var(--card-border); margin-bottom: var(--spacing-xl);">
+                <h3 style="color: var(--primary-orange); margin-bottom: var(--spacing-lg); text-align: center;">💼 Gaming Industry Investment & Finance</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg);">
+                    <div>
+                        <h4 style="color: var(--text-color); margin-bottom: var(--spacing-sm);">Investment Opportunities</h4>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.5;">The gaming industry continues to show strong growth potential. Consider exploring investment opportunities in gaming stocks, cryptocurrency related to gaming, and crowdfunding for indie game projects.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-color); margin-bottom: var(--spacing-sm);">Financial Planning</h4>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.5;">Manage your gaming expenses effectively with budgeting apps, financial planning tools, and investment tracking software. Learn about saving strategies and smart spending habits for gamers.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-color); margin-bottom: var(--spacing-sm);">Insurance & Protection</h4>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-sm); line-height: 1.5;">Protect your valuable gaming equipment and digital assets with appropriate insurance coverage. Consider device protection plans, identity theft protection, and cyber security solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- Main Content -->
     <main class="container" id="container" style="display: none;">  
@@ -1314,6 +1419,66 @@
         <!-- Mid-Content Ad (Strategic Placement) -->
         <div class="ad-container content-ad" id="midContentAd" style="display: none;">
             <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6409311049525505"
+                 data-ad-slot="9876543210"
+                 data-ad-format="fluid"
+                 data-ad-layout-key="-fb+5w+4e-db+86"
+                 data-full-width-responsive="true"></ins>
+        </div>
+
+        <!-- Lifestyle & Shopping Content Section -->
+        <div class="lifestyle-content" style="background: var(--background-secondary); padding: var(--spacing-xl); margin: var(--spacing-xl) 0; border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+            <h3 style="color: var(--primary-orange); font-size: var(--font-size-xl); margin-bottom: var(--spacing-lg); text-align: center;">
+                🛍️ Gaming Lifestyle & Shopping Recommendations
+            </h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg);">
+                <div style="background: var(--card-background); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">🏠 Home & Lifestyle</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--spacing-sm);">Create the perfect gaming environment with smart home solutions, ergonomic furniture, and lifestyle products that enhance your gaming experience and overall well-being.</p>
+                    <ul style="color: var(--text-secondary); font-size: var(--font-size-sm); margin: var(--spacing-sm) 0;">
+                        <li>Smart lighting and RGB LED strips</li>
+                        <li>Ergonomic gaming chairs and desks</li>
+                        <li>Air purifiers and room accessories</li>
+                        <li>Kitchen appliances for quick meals</li>
+                        <li>Fitness equipment for health balance</li>
+                    </ul>
+                </div>
+                
+                <div style="background: var(--card-background); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">👕 Fashion & Apparel</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--spacing-sm);">Express your gaming passion with branded merchandise, comfortable gaming apparel, and accessories that showcase your favorite games and teams.</p>
+                    <ul style="color: var(--text-secondary); font-size: var(--font-size-sm); margin: var(--spacing-sm) 0;">
+                        <li>Gaming-themed clothing and merchandise</li>
+                        <li>Comfortable hoodies and gaming jerseys</li>
+                        <li>Branded accessories and collectibles</li>
+                        <li>Custom gaming gear and peripherals</li>
+                        <li>Shoes and casual wear for gamers</li>
+                    </ul>
+                </div>
+                
+                <div style="background: var(--card-background); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">🚗 Travel & Automotive</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--spacing-sm);">Stay connected and continue gaming on the go with travel accessories, car chargers, and portable gaming solutions for tournaments and events.</p>
+                    <ul style="color: var(--text-secondary); font-size: var(--font-size-sm); margin: var(--spacing-sm) 0;">
+                        <li>Car phone mounts and chargers</li>
+                        <li>Portable gaming accessories</li>
+                        <li>Travel bags and carrying cases</li>
+                        <li>Hotel booking and travel deals</li>
+                        <li>Transportation for gaming events</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Side Ad for Higher Engagement -->
+        <div class="ad-container side-ad" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 999; background: var(--card-background); padding: var(--spacing-sm); border-radius: var(--radius-md); border: 1px solid var(--card-border); box-shadow: var(--shadow-large);">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-6409311049525505"
+                 data-ad-slot="7317445135"></ins>
+        </div>
                  style="display:block"
                  data-ad-format="fluid"
                  data-ad-layout-key="-fb+5w+4e-db+86"
@@ -1366,7 +1531,15 @@
         <div class="disclaimer-container">
             <h3 class="disclaimer-title">📋 Important Disclaimer</h3>
             <div class="disclaimer-content">
-                <p><strong>Educational Purpose Only:</strong> This website is created solely for educational and informational purposes to help Free Fire community members learn about game items, their properties, and characteristics.</p>
+                <p><strong>Educational Content Notice:</strong> This website provides comprehensive educational information about Free Fire items, gaming strategies, technology trends, and related topics. All product recommendations and reviews are based on extensive research and community feedback.</p>
+                
+                <p><strong>Affiliate Disclosure:</strong> This site may contain affiliate links and advertisements. We may earn commissions from purchases made through these links, which helps support our content creation and server costs at no additional cost to you.</p>
+                
+                <p><strong>Gaming Responsibly:</strong> Please game responsibly and within your means. Set time limits, take regular breaks, and prioritize your health, education, and real-life responsibilities. If you're experiencing gaming-related issues, please seek help from appropriate resources.</p>
+                
+                <p><strong>Investment & Financial Advice Disclaimer:</strong> Any financial, investment, or business information provided is for educational purposes only and should not be considered professional financial advice. Always consult with qualified professionals before making investment decisions.</p>
+                
+                <p><strong>Third-Party Content:</strong> We are not responsible for the content, privacy policies, or practices of third-party websites linked from this site. All external links are provided for convenience and informational purposes only.</p>
                 
                 <p><strong>Intellectual Property Notice:</strong> All game assets, item data, names, images, and related content are the exclusive property of <strong>Garena International</strong> and <strong>Sea Limited</strong>. We do not claim ownership of any game-related content.</p>
                 
@@ -1378,10 +1551,49 @@
                 
                 <p><strong>Content Accuracy:</strong> While we strive for accuracy, item information may change due to game updates. Always refer to the official Free Fire game for the most current item details.</p>
                 
-                <p class="disclaimer-contact">
-                    <strong>Contact:</strong> For content removal requests or inquiries, please contact us at 
+                <div class="disclaimer-contact">
+                    <p><strong>Questions or Concerns?</strong> Contact us at: <a href="mailto:contact@freefirecommunity.com">contact@freefirecommunity.com</a></p>
+                </div>
+            </div> 
                     <a href="mailto:legal@freefirecommunity.com">legal@freefirecommunity.com</a>
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Value Bottom Content Section -->
+    <section style="background: var(--background-secondary); padding: var(--spacing-2xl); border-top: 1px solid var(--card-border);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h3 style="color: var(--primary-orange); font-size: var(--font-size-2xl); text-align: center; margin-bottom: var(--spacing-xl);">
+                📈 Latest Gaming Industry Trends & News
+            </h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xl);">
+                <div style="background: var(--card-background); padding: var(--spacing-xl); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">🌟 Emerging Gaming Technologies</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Stay updated with the latest innovations in mobile gaming, including 5G technology, cloud gaming platforms, AI-enhanced gameplay, virtual reality integration, and blockchain gaming ecosystems that are shaping the future of interactive entertainment.</p>
+                </div>
+                
+                <div style="background: var(--card-background); padding: var(--spacing-xl); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">💡 Career Opportunities in Gaming</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Explore diverse career paths in the gaming industry, from game development and esports management to content creation, marketing, and community building. Learn about emerging roles in game analytics, user experience design, and gaming psychology.</p>
+                </div>
+                
+                <div style="background: var(--card-background); padding: var(--spacing-xl); border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">🎯 Marketing & Business Insights</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Understand the business side of gaming with insights into digital marketing strategies, influencer partnerships, brand collaborations, and monetization models that successful gaming content creators and businesses use to grow their audience and revenue.</p>
+                </div>
+            </div>
+            
+            <!-- Premium Bottom Ad -->
+            <div class="ad-container footer-ad" style="margin-top: var(--spacing-2xl); background: linear-gradient(135deg, var(--primary-orange-light), var(--accent-blue-hover)); border: 2px solid var(--primary-orange); border-radius: var(--radius-lg); padding: var(--spacing-lg);">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6409311049525505"
+                     data-ad-slot="7317445135"
+                     data-ad-format="fluid"
+                     data-ad-layout-key="-ef+6k+3z-d+2c"
+                     data-full-width-responsive="true"></ins>
             </div>
         </div>
     </section>
@@ -1436,6 +1648,11 @@
         let currentModalItem = null;
         let searchOpen = false;
         let searchTimeout = null;
+        
+        // Ad revenue optimization flags
+        let adInteractionCount = 0;
+        let contentEngagementTime = 0;
+        let startTime = Date.now();
 
         // Performance optimization: Debounce search
         function debounce(func, wait) {
@@ -2148,13 +2365,131 @@
             // Initialize iframe detection
             initializeIframeDetection();
             
+            // Show mid-content ad after some engagement
+            setTimeout(() => {
+                const midAd = document.getElementById('midContentAd');
+                if (midAd) {
+                    midAd.style.display = 'block';
+                    // Reinitialize AdSense for dynamically shown ads
+                    if (window.adsbygoogle && window.adsbygoogle.push) {
+                        window.adsbygoogle.push({});
+                    }
+                }
+            }, 5000); // Show after 5 seconds
+            
+            // Track content engagement for ad optimization
+            trackContentEngagement();
+            
             setTimeout(() => {
                 if (window.performance) {
                     const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
                     console.log(`Page load time: ${loadTime}ms`);
                 }
+                // Initialize additional ads
+                initializeAdditionalAds();
             }, 0);
         });
+
+        // Content engagement tracking for better ad targeting
+        function trackContentEngagement() {
+            // Track scroll depth
+            let maxScrollDepth = 0;
+            window.addEventListener('scroll', () => {
+                const scrollDepth = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+                maxScrollDepth = Math.max(maxScrollDepth, scrollDepth);
+                
+                // Show more ads based on engagement
+                if (maxScrollDepth > 0.3 && !document.querySelector('.engagement-ad-shown')) {
+                    showEngagementAd();
+                }
+            }, { passive: true });
+            
+            // Track time on page
+            setInterval(() => {
+                contentEngagementTime += 1;
+                // Add more ad units for highly engaged users
+                if (contentEngagementTime > 30 && !document.querySelector('.engaged-user-ad')) {
+                    addEngagedUserAd();
+                }
+            }, 1000);
+        }
+
+        function showEngagementAd() {
+            const adContainer = document.createElement('div');
+            adContainer.className = 'ad-container engagement-ad-shown';
+            adContainer.style.cssText = `
+                margin: var(--spacing-xl) auto;
+                padding: var(--spacing-lg);
+                background: var(--card-background);
+                border: 2px solid var(--primary-orange);
+                border-radius: var(--radius-lg);
+                text-align: center;
+                max-width: 728px;
+            `;
+            adContainer.innerHTML = `
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6409311049525505"
+                     data-ad-slot="7317445135"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            `;
+            
+            const container = document.querySelector('.container');
+            if (container) {
+                container.appendChild(adContainer);
+                if (window.adsbygoogle) {
+                    window.adsbygoogle.push({});
+                }
+            }
+        }
+
+        function addEngagedUserAd() {
+            const adContainer = document.createElement('div');
+            adContainer.className = 'ad-container engaged-user-ad';
+            adContainer.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 999;
+                background: var(--card-background);
+                padding: var(--spacing-md);
+                border-radius: var(--radius-lg);
+                border: 2px solid var(--primary-orange);
+                box-shadow: var(--shadow-large);
+                max-width: 320px;
+            `;
+            adContainer.innerHTML = `
+                <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 5px; background: var(--primary-orange); color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 12px;">×</button>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6409311049525505"
+                     data-ad-slot="7317445135"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            `;
+            
+            document.body.appendChild(adContainer);
+            if (window.adsbygoogle) {
+                window.adsbygoogle.push({});
+            }
+        }
+
+        function initializeAdditionalAds() {
+            // Initialize all AdSense ads
+            if (window.adsbygoogle) {
+                // Push all ad units
+                const adElements = document.querySelectorAll('.adsbygoogle');
+                adElements.forEach(() => {
+                    try {
+                        window.adsbygoogle.push({});
+                    } catch (e) {
+                        console.log('AdSense initialization skipped');
+                    }
+                });
+            }
+        }
 
         // Add some utility functions for future enhancements
         function shareItem(item) {
