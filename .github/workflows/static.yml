@@ -37,15 +37,15 @@ jobs:
           IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL }}
         run: |
           # Replace the placeholder with the actual secret value
-          sed -i "s|{{IMAGE_BASE_URL}}|$IMAGE_BASE_URL|g" items.html
+          sed -i "s|{{IMAGE_BASE_URL}}|$IMAGE_BASE_URL|g" index.html
           
           # Verify the replacement was successful
           echo "✅ Configuration updated successfully"
           echo "🔒 IMAGE_BASE_URL has been configured from secrets"
           
           # Show confirmation without revealing the actual URL
-          if grep -q "$IMAGE_BASE_URL" items.html; then
-            echo "✅ Secret IMAGE_BASE_URL successfully injected into items.html"
+          if grep -q "$IMAGE_BASE_URL" index.html; then
+            echo "✅ Secret IMAGE_BASE_URL successfully injected into index.html"
           else
             echo "❌ Failed to inject IMAGE_BASE_URL"
             exit 1
