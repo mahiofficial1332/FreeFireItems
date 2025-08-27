@@ -39,9 +39,6 @@ jobs:
           # Replace the placeholder with the actual secret value in index.html
           sed -i "s|{{IMAGE_BASE_URL}}|$IMAGE_BASE_URL|g" index.html
           
-          # Also create index.html as a copy of index.html for proper GitHub Pages routing
-          cp index.html index.html
-          
           # Verify the replacement was successful
           echo "✅ Configuration updated successfully"
           echo "🔒 IMAGE_BASE_URL has been configured from secrets"
