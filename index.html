@@ -434,7 +434,7 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             gap: var(--spacing-md);
             width: 100%;
         }
@@ -453,7 +453,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 90px;
+            height: 110px;
             position: relative;
             overflow: hidden;
         }
@@ -486,8 +486,8 @@
         }
 
         .icon-card img {
-            width: 55px;
-            height: 55px;
+            width: 70px;
+            height: 70px;
             border-radius: var(--radius-sm);
             animation: iconLoad var(--transition-slow) ease-out;
             pointer-events: none;
@@ -1002,18 +1002,18 @@
             }
             
             .grid-container {
-                grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
                 gap: var(--spacing-sm);
             }
             
             .icon-card {
-                height: 75px;
+                height: 95px;
                 padding: var(--spacing-sm);
             }
             
             .icon-card img {
-                width: 45px;
-                height: 45px;
+                width: 60px;
+                height: 60px;
             }
             
             .modal-content {
@@ -1170,16 +1170,16 @@
             }
             
             .grid-container {
-                grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
             }
             
             .icon-card {
-                height: 65px;
+                height: 85px;
             }
             
             .icon-card img {
-                width: 35px;
-                height: 35px;
+                width: 50px;
+                height: 50px;
             }
             
             .header-title {
@@ -1265,8 +1265,8 @@
     <header class="header" id="header" role="banner">
         <div class="header-title-container">
             <div class="header-branding">
-                <img src="https://www.freefirecommunity.com/wp-content/uploads/2025/06/FreeFireCommunityLogoRefined.png" 
-                     alt="Free Fire Community Logo" 
+                <img src="https://www.freefirecommunity.com/wp-content/uploads/2025/06/cropped-FFCRefinedFavicon-1.png" 
+                     alt="Free Fire Community Icon" 
                      class="header-logo"
                      onerror="this.style.display='none'">
                 <h1 class="header-title">ARSENAL</h1>
@@ -1330,7 +1330,7 @@
                 Discover thousands of Free Fire items, weapons, skins, and characters. Use our advanced search and filters to find exactly what you're looking for. Each item includes detailed information, stats, and rarity details.
             </p>
             
-            <!-- Premium Ad Space -->
+            <!-- Premium Ad Space
             <div class="ad-container content-ad" style="margin: var(--spacing-xl) 0; background: linear-gradient(135deg, var(--primary-orange-light), var(--background-secondary)); border: 2px solid var(--primary-orange); border-radius: var(--radius-lg);">
                 <ins class="adsbygoogle"
      style="display:block"
@@ -1338,12 +1338,68 @@
      data-ad-layout-key="-fb+5w+4e-db+86"
      data-ad-client="ca-pub-6409311049525505"
      data-ad-slot="4452408958"></ins>
-            </div>
+     <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div> -->
         </div>
     </section>
     
     <!-- Main Content -->
-    <main class="container" id="container" style="display: none;">  
+    <main class="container" id="container" style="display: none;">
+        
+        <!-- Search and Filters Section (Top of Items) -->
+        <section class="search-filters-section" style="background: var(--card-background); padding: var(--spacing-xl); margin-bottom: var(--spacing-xl); border-radius: var(--radius-lg); border: 2px solid var(--card-border); box-shadow: var(--shadow-medium);">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h3 style="color: var(--primary-orange); font-size: var(--font-size-xl); margin-bottom: var(--spacing-lg); text-align: center; font-weight: 600;">
+                    🔍 Search & Filter Items
+                </h3>
+                
+                <!-- Search Box -->
+                <div style="position: relative; margin-bottom: var(--spacing-lg);">
+                    <label for="main-search" class="sr-only">Search items</label>
+                    <textarea 
+                        class="main-search-input" 
+                        id="main-search" 
+                        placeholder="Search by item name, ID, description, or rarity..." 
+                        oninput="filterIcons()"
+                        aria-describedby="main-search-help"
+                        rows="1"
+                        style="width: 100%; padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 50px; border-radius: var(--radius-md); border: 2px solid var(--card-border); background: var(--background-secondary); color: var(--text-color); font-family: var(--font-family); font-size: var(--font-size-base); height: 56px; resize: none; transition: all var(--transition-normal);"
+                    ></textarea>
+                    <i class="fas fa-search" style="position: absolute; left: var(--spacing-md); top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: var(--font-size-lg);" aria-hidden="true"></i>
+                    <div id="main-search-help" class="sr-only">Type to search through Free Fire items database</div>
+                </div>
+                
+                <!-- Filters Row -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md);">
+                    <div>
+                        <label for="main-filter-Rare" style="display: block; color: var(--text-secondary); font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--spacing-xs);">Rarity</label>
+                        <select id="main-filter-Rare" style="width: 100%; padding: var(--spacing-md); border-radius: var(--radius-md); border: 2px solid var(--card-border); background: var(--background-secondary); color: var(--text-color); font-size: var(--font-size-base); font-weight: 500; cursor: pointer; outline: none; height: 48px; font-family: var(--font-family); transition: all var(--transition-normal);" aria-label="Filter by rarity">
+                            <option value="">All Rarities</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="main-filter-itemType" style="display: block; color: var(--text-secondary); font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--spacing-xs);">Item Type</label>
+                        <select id="main-filter-itemType" style="width: 100%; padding: var(--spacing-md); border-radius: var(--radius-md); border: 2px solid var(--card-border); background: var(--background-secondary); color: var(--text-color); font-size: var(--font-size-base); font-weight: 500; cursor: pointer; outline: none; height: 48px; font-family: var(--font-family); transition: all var(--transition-normal);" aria-label="Filter by item type">
+                            <option value="">All Types</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="main-filter-collectionType" style="display: block; color: var(--text-secondary); font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--spacing-xs);">Collection</label>
+                        <select id="main-filter-collectionType" style="width: 100%; padding: var(--spacing-md); border-radius: var(--radius-md); border: 2px solid var(--card-border); background: var(--background-secondary); color: var(--text-color); font-size: var(--font-size-base); font-weight: 500; cursor: pointer; outline: none; height: 48px; font-family: var(--font-family); transition: all var(--transition-normal);" aria-label="Filter by collection">
+                            <option value="">All Collections</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Results Info -->
+                <div id="results-info" style="margin-top: var(--spacing-md); text-align: center; color: var(--text-secondary); font-size: var(--font-size-sm);"></div>
+            </div>
+        </section>
+  
         <div class="grid-container" id="iconGrid" role="grid" aria-label="Items grid"></div>  
         
         <nav class="pagination-container" aria-label="Pagination">  
@@ -1529,10 +1585,9 @@
                 <p><strong>Content Accuracy:</strong> While we strive for accuracy, item information may change due to game updates. Always refer to the official Free Fire game for the most current item details.</p>
                 
                 <div class="disclaimer-contact">
-                    <p><strong>Questions or Concerns?</strong> Contact us at: <a href="mailto:contact@freefirecommunity.com">contact@freefirecommunity.com</a></p>
+                    <p><strong>Questions or Concerns?</strong> Contact us at: <a href="mailto:contact@freefirecommunity.com">contact@freefirecommunity.com</a> | <a href="mailto:legal@freefirecommunity.com">legal@freefirecommunity.com</a></p>
                 </div>
             </div> 
-                    <a href="mailto:legal@freefirecommunity.com">legal@freefirecommunity.com</a>
                 </p>
             </div>
         </div>
@@ -1718,10 +1773,24 @@
             // Keyboard navigation
             document.addEventListener('keydown', handleKeyboardNavigation);
 
-            // Filter event listeners with debounce
-            ["filter-Rare", "filter-itemType", "filter-collectionType"].forEach(id => {
-                document.getElementById(id).addEventListener("change", debounce(applyFilters, 300));
+            // Filter event listeners with debounce for both header and main filters
+            ["filter-Rare", "filter-itemType", "filter-collectionType", "main-filter-Rare", "main-filter-itemType", "main-filter-collectionType"].forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener("change", debounce(applyFilters, 300));
+                }
             });
+            
+            // Search input listeners
+            const headerSearch = document.getElementById("search");
+            const mainSearch = document.getElementById("main-search");
+            
+            if (headerSearch) {
+                headerSearch.addEventListener("input", debounce(filterIcons, 300));
+            }
+            if (mainSearch) {
+                mainSearch.addEventListener("input", debounce(filterIcons, 300));
+            }
         }
 
         function initializeA11y() {
@@ -1826,6 +1895,11 @@
                 populateDropdown("filter-Rare", uniqueFilters.Rare);
                 populateDropdown("filter-itemType", uniqueFilters.itemType);
                 populateDropdown("filter-collectionType", uniqueFilters.collectionType);
+                
+                // Also populate main filters
+                populateDropdown("main-filter-Rare", uniqueFilters.Rare);
+                populateDropdown("main-filter-itemType", uniqueFilters.itemType);
+                populateDropdown("main-filter-collectionType", uniqueFilters.collectionType);
 
                 filteredData = [...iconsData];
                 renderIcons();
@@ -1883,10 +1957,29 @@
         const debouncedApplyFilters = debounce(applyFilters, 300);
 
         function applyFilters() {
-            const itemTypeFilter = document.getElementById("filter-itemType").value;
-            const collectionTypeFilter = document.getElementById("filter-collectionType").value;
-            const rareFilter = document.getElementById("filter-Rare").value;
-            const searchQuery = document.getElementById("search").value.toLowerCase().trim();
+            // Get values from both header and main filters
+            const itemTypeFilter = document.getElementById("filter-itemType")?.value || document.getElementById("main-filter-itemType")?.value || "";
+            const collectionTypeFilter = document.getElementById("filter-collectionType")?.value || document.getElementById("main-filter-collectionType")?.value || "";
+            const rareFilter = document.getElementById("filter-Rare")?.value || document.getElementById("main-filter-Rare")?.value || "";
+            const searchQuery = (document.getElementById("search")?.value || document.getElementById("main-search")?.value || "").toLowerCase().trim();
+            
+            // Sync filter values between header and main filters
+            if (document.getElementById("filter-itemType") && document.getElementById("main-filter-itemType")) {
+                document.getElementById("filter-itemType").value = itemTypeFilter;
+                document.getElementById("main-filter-itemType").value = itemTypeFilter;
+            }
+            if (document.getElementById("filter-collectionType") && document.getElementById("main-filter-collectionType")) {
+                document.getElementById("filter-collectionType").value = collectionTypeFilter;
+                document.getElementById("main-filter-collectionType").value = collectionTypeFilter;
+            }
+            if (document.getElementById("filter-Rare") && document.getElementById("main-filter-Rare")) {
+                document.getElementById("filter-Rare").value = rareFilter;
+                document.getElementById("main-filter-Rare").value = rareFilter;
+            }
+            if (document.getElementById("search") && document.getElementById("main-search")) {
+                document.getElementById("search").value = searchQuery;
+                document.getElementById("main-search").value = searchQuery;
+            }
             
             // Enhanced search with multiple field matching
             filteredData = iconsData.filter(item => {
